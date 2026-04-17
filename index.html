@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Catálogo digital de comida. Arma tu pedido y envíalo por WhatsApp al instante."
+    />
+    <title>Sabor Express — Catálogo & Pedidos</title>
+    <!-- Tipografía moderna (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!--
+      ═══════════════════════════════════════════════════════════════════
+      NÚMERO DE WHATSAPP: se configura en script.js (constante al inicio).
+      Busca: WHATSAPP_SELLER_NUMBER y reemplaza 521XXXXXXXXXX por tu número
+      (solo dígitos: código de país + número, sin +, espacios ni guiones).
+      ═══════════════════════════════════════════════════════════════════
+    -->
+    <a class="skip-link" href="#catalogo">Saltar al catálogo</a>
+
+    <header class="site-header" id="inicio">
+      <div class="header-inner">
+        <div class="brand">
+          <span class="brand-icon" aria-hidden="true">🍔</span>
+          <div class="brand-text">
+            <span class="brand-name">Sabor Express</span>
+            <span class="brand-tagline">Pedidos rápidos por WhatsApp</span>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="cart-toggle"
+          id="cartToggle"
+          aria-expanded="false"
+          aria-controls="cartPanel"
+          aria-label="Abrir carrito de compras"
+        >
+          <span class="cart-toggle-icon" aria-hidden="true">🛒</span>
+          <span class="cart-toggle-label">Carrito</span>
+          <span class="cart-badge" id="cartBadge" hidden>0</span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <h1 id="hero-title">Tu comida favorita, a un mensaje de distancia</h1>
+          <p class="hero-lead">
+            Explora el menú, arma tu carrito y envía el pedido listo por
+            <strong>WhatsApp</strong>. Sin complicaciones.
+          </p>
+          <a class="btn btn-primary hero-cta" href="#catalogo">Ver menú</a>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-blob"></div>
+          <span class="hero-emoji">🌮</span>
+        </div>
+      </section>
+
+      <section class="catalog" id="catalogo" aria-labelledby="catalog-title">
+        <div class="section-head">
+          <h2 id="catalog-title">Menú del día</h2>
+          <p class="section-sub">Toca “Agregar” y revisa tu carrito cuando quieras.</p>
+        </div>
+        <!-- Las tarjetas de producto se generan desde script.js -->
+        <div class="product-grid" id="productGrid" role="list"></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>© <span id="year"></span> Sabor Express · Catálogo demo</p>
+    </footer>
+
+    <!-- Overlay + panel lateral del carrito -->
+    <div class="cart-overlay" id="cartOverlay" hidden></div>
+    <aside
+      class="cart-panel"
+      id="cartPanel"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cartTitle"
+      hidden
+    >
+      <div class="cart-panel-head">
+        <h2 id="cartTitle">Tu pedido</h2>
+        <button
+          type="button"
+          class="icon-btn cart-close"
+          id="cartClose"
+          aria-label="Cerrar carrito"
+        >
+          ✕
+        </button>
+      </div>
+      <div class="cart-body">
+        <ul class="cart-list" id="cartList" aria-live="polite"></ul>
+        <p class="cart-empty" id="cartEmpty">El carrito está vacío. ¡Agrega algo rico!</p>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total-row">
+          <span>Total</span>
+          <strong id="cartTotal">$0.00</strong>
+        </div>
+        <button type="button" class="btn btn-whatsapp" id="whatsappBtn" disabled>
+          <span aria-hidden="true">💬</span>
+          Enviar pedido por WhatsApp
+        </button>
+        <p class="cart-hint">No procesamos pagos aquí: el pedido llega al vendedor por chat.</p>
+      </div>
+    </aside>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
